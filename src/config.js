@@ -1,10 +1,15 @@
 
 
-export function APIKey() {
-    let key = localStorage.getItem(`APIKey`);
+export function config() {
+    let key = localStorage.getItem(`config`);
     if (key === null) {
-        key = prompt(`Please enter your API key`);
-        localStorage.setItem(`APIKey`, key); 
+        let config = {
+            key: ``,
+            city: ``,
+            mesureSystem: `metric`
+        }
+        config = JSON.stringify(config);
+        localStorage.setItem(`config`, config); 
     }
     return key
 }

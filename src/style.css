@@ -1,18 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 *{
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
-body
-{
+body{
   margin:0;
   padding:0;
   background:#262626;
-}
-.weather{
-    color: white;
-}
-.ring
-{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}.ring{
   position:absolute;
   top:50%;
   left:50%;
@@ -29,9 +29,7 @@ body
   color:#fff000;
   letter-spacing:4px;
   text-transform:uppercase;
-}
-.ring:before
-{
+}.ring:before{
   content:'';
   position:absolute;
   top:-3px;
@@ -43,15 +41,46 @@ body
   border-right:3px solid #fff000;
   border-radius:50%;
   animation:animateC 2s ease-in-out infinite;
+}.container{
+  color: white;
+  background: #1167e066;
+  padding: 1rem;
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  border-radius: 20px;
+  gap: 5px;
+}.info{
+  padding: 0.5em;
+}.weather-icon,.time{
+  height: 32px;
+  width: 32px;
+  grid-column: 1;
+  grid-row: 1;
+}.feels-like{
+  grid-row: 4;
+  grid-column: 1;
+}.time{
+  text-align: right;
+  width: 90%;
+}.city{
+  grid-row: 2;
+  grid-column: 1;
+}.temp{
+    grid-row: 3;
+  grid-column: 1;
+}button{
+  border-radius: 20px;
+  border: white 1px solid;
+  color: white;
+  background-color: #00000000;
 }
-@keyframes animateC
-{
-  0%
-  {
+
+
+@keyframes animateC{
+  0%{
     transform:rotate(0deg);
-  }
-  100%
-  {
+  }100%{
     transform:rotate(360deg);
   }
 }
