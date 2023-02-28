@@ -5,7 +5,7 @@ import styles from './style.css';
 
 
 
-let cfg = config();
+let cfg = JSON.parse(config());
 
 console.log(cfg);
 let key = cfg.key;
@@ -47,8 +47,12 @@ function renderWeather (data) {
        
         let temp = document.createElement(`div`);
         temp.classList.add(`temp`);
-        temp.innerHTML = `${Math.round(data.main.temp)}°C`;
-        
+        if (mesureSystem === `metric`) {
+            temp.innerHTML = `${Math.round(data.main.temp)}°C`;
+        }else if (mesureSystem === `imperial`) {
+            temp.innerHTML = `${Math.round(data.main.temp)}°F`;
+        }
+            
         let feelsLike = document.createElement(`div`);
         feelsLike.classList.add(`feels-like`);
         feelsLike.innerHTML = `Feels like ${Math.round(data.main.feels_like)}°C`;

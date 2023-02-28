@@ -17,6 +17,7 @@ export function PopupConfig () {
     let popupFormMesureSystem = document.createElement(`select`);
     let popupFormMesureSystemMetric = document.createElement(`option`);
     let popupFormMesureSystemImperial = document.createElement(`option`);
+    let popupFormSubmit = document.createElement(`button`);
 
     background.classList.add(`popup-background`);
 
@@ -58,10 +59,29 @@ export function PopupConfig () {
     popupFormMesureSystem.appendChild(popupFormMesureSystemImperial);
 
     popupFormMesureSystem.value = mesureSystem;
+
+    popupFormSubmit.classList.add(`popup-form-submit`);
+    popupFormSubmit.setAttribute(`type`, `submit`);
+    popupFormSubmit.innerHTML = `Save`;
     
-    popupForm.append(popupFormKey, popupFormMesureSystem, popupFormCity);
+    popupForm.append(popupFormKey, popupFormMesureSystem, popupFormCity ,popupFormSubmit);
     popup.append(popupTitle, popupclose, popupForm);
     background.appendChild(popup);
     document.body.appendChild(background);
 
+    popupForm.addEventListener(`submit`, (e) => {
+        let key = popupFormKey.value;
+        let city = popupFormCity.value;
+        let mesureSystem = popupFormMesureSystem.value;
+        let config = {
+            key,
+            city,
+            mesureSystem
+        };
+        console.log(config);    
+        config = JSON.stringify(config);
+        localStorage.setItem(`config`, config);
+        background.remove();
+        document.location.reload();
+    });
 }
